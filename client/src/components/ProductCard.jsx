@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
+
 import { ProductContext } from "../context/ProductContext";
+import { CartContext } from "../context/CartContext";
 
 const ProductCard = ({ product }) => {
-  const { deleteProduct } = useContext(ProductContext);
-  const [confirmDelete, setConfirmDelete] = useState(false);
+  const { deleteProduct } =
+    useContext(ProductContext);
+
+  const { addToCart } =
+    useContext(CartContext);
+
+  const [confirmDelete, setConfirmDelete] =
+    useState(false);
 
   return (
     <div className="product-card">
@@ -41,19 +49,34 @@ const ProductCard = ({ product }) => {
         {!confirmDelete ? (
           <button
             className="delete-btn"
-            onClick={() => setConfirmDelete(true)}
+            onClick={() =>
+              setConfirmDelete(true)
+            }
           >
             Delete
           </button>
         ) : (
           <button
             className="delete-btn"
-            onClick={() => deleteProduct(product._id)}
+            onClick={() =>
+              deleteProduct(product._id)
+            }
           >
             Confirm
           </button>
         )}
       </div>
+
+      <button
+        className="primary-btn"
+        style={{
+          width: "100%",
+          marginTop: "12px",
+        }}
+        onClick={() => addToCart(product)}
+      >
+        Add To Cart
+      </button>
     </div>
   );
 };
