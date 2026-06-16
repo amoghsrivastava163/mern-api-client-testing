@@ -3,6 +3,9 @@ import { useContext, useState } from "react";
 
 import { ProductContext } from "../context/ProductContext";
 import { CartContext } from "../context/CartContext";
+import { WishlistContext } from "../context/WishlistContext";
+
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
   const { deleteProduct } =
@@ -10,6 +13,9 @@ const ProductCard = ({ product }) => {
 
   const { addToCart } =
     useContext(CartContext);
+
+  const { addToWishlist } =
+    useContext(WishlistContext);
 
   const [confirmDelete, setConfirmDelete] =
     useState(false);
@@ -73,9 +79,32 @@ const ProductCard = ({ product }) => {
           width: "100%",
           marginTop: "12px",
         }}
-        onClick={() => addToCart(product)}
+        onClick={() => {
+          addToCart(product);
+
+          toast.success(
+            "Added To Cart 🛒"
+          );
+        }}
       >
         Add To Cart
+      </button>
+
+      <button
+        className="primary-btn"
+        style={{
+          width: "100%",
+          marginTop: "10px",
+        }}
+        onClick={() => {
+          addToWishlist(product);
+
+          toast.success(
+            "Added To Wishlist ❤️"
+          );
+        }}
+      >
+        ❤️ Add To Wishlist
       </button>
     </div>
   );

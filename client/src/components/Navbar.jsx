@@ -8,13 +8,13 @@ const Navbar = () => {
       </h2>
 
       <div className="nav-links">
-        <Link to="/">
-          Products
+        <Link to="/">Products</Link>
+
+        <Link to="/wishlist">
+          Wishlist
         </Link>
 
-        <Link to="/cart">
-          Cart
-        </Link>
+        <Link to="/cart">Cart</Link>
 
         <Link to="/checkout">
           Checkout

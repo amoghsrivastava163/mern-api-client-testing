@@ -1,16 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import App from "./App";
 import "./index.css";
 
 import { ProductProvider } from "./context/ProductContext";
 import { CartProvider } from "./context/CartContext";
+import { WishlistProvider } from "./context/WishlistContext";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
   <React.StrictMode>
     <ProductProvider>
       <CartProvider>
-        <App />
+        <WishlistProvider>
+          <App />
+
+          <ToastContainer />
+        </WishlistProvider>
       </CartProvider>
     </ProductProvider>
   </React.StrictMode>

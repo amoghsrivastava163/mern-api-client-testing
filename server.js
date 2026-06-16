@@ -1,3 +1,6 @@
+const wishlistRoutes = require(
+  "./routes/wishlistRoutes"
+);
 require("dotenv").config();
 
 const express = require("express");
@@ -26,6 +29,10 @@ app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;
 
+app.use(
+  "/api/wishlist",
+  wishlistRoutes
+);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

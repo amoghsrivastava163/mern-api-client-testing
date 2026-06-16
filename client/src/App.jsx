@@ -10,6 +10,7 @@ import EditProduct from "./pages/EditProduct";
 
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -38,6 +39,11 @@ function App() {
         <Route
           path="/checkout"
           element={<Checkout />}
+        />
+
+        <Route
+          path="/wishlist"
+          element={<Wishlist />}
         />
       </Routes>
     </BrowserRouter>
