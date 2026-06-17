@@ -1,3 +1,5 @@
+const orderRoutes = require("./routes/orderRoutes");
+
 const wishlistRoutes = require(
   "./routes/wishlistRoutes"
 );
@@ -33,6 +35,7 @@ app.use(
   "/api/wishlist",
   wishlistRoutes
 );
+app.use("/api/orders", orderRoutes);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

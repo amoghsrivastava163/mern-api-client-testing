@@ -15,7 +15,7 @@ const Navbar = () => {
         </Link>
 
         <Link to="/cart">Cart</Link>
-
+        <Link to="/orders">Orders</Link>
         <Link to="/checkout">
           Checkout
         </Link>
