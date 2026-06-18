@@ -1,3 +1,4 @@
+import Reviews from "./pages/Reviews";
 import {
   BrowserRouter,
   Routes,
@@ -46,6 +47,10 @@ function App() {
           path="/wishlist"
           element={<Wishlist />}
         />
+        <Route
+  path="/reviews/:productId"
+  element={<Reviews />}
+/>
 
         <Route
           path="/orders"

@@ -1,24 +1,17 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import { ProductContext } from "../context/ProductContext";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
 
-import { toast } from "react-toastify";
-
 const ProductCard = ({ product }) => {
-  const { deleteProduct } =
-    useContext(ProductContext);
+  const { deleteProduct } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext);
+  const { addToWishlist } = useContext(WishlistContext);
 
-  const { addToCart } =
-    useContext(CartContext);
-
-  const { addToWishlist } =
-    useContext(WishlistContext);
-
-  const [confirmDelete, setConfirmDelete] =
-    useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   return (
     <div className="product-card">
@@ -55,18 +48,14 @@ const ProductCard = ({ product }) => {
         {!confirmDelete ? (
           <button
             className="delete-btn"
-            onClick={() =>
-              setConfirmDelete(true)
-            }
+            onClick={() => setConfirmDelete(true)}
           >
             Delete
           </button>
         ) : (
           <button
             className="delete-btn"
-            onClick={() =>
-              deleteProduct(product._id)
-            }
+            onClick={() => deleteProduct(product._id)}
           >
             Confirm
           </button>
@@ -82,9 +71,7 @@ const ProductCard = ({ product }) => {
         onClick={() => {
           addToCart(product);
 
-          toast.success(
-            "Added To Cart 🛒"
-          );
+          toast.success("Added To Cart 🛒");
         }}
       >
         Add To Cart
@@ -99,13 +86,27 @@ const ProductCard = ({ product }) => {
         onClick={() => {
           addToWishlist(product);
 
-          toast.success(
-            "Added To Wishlist ❤️"
-          );
+          toast.success("Added To Wishlist ❤️");
         }}
       >
         ❤️ Add To Wishlist
       </button>
+
+      <Link
+        to={`/reviews/${product._id}`}
+        className="primary-btn"
+        style={{
+          display: "block",
+          width: "100%",
+          marginTop: "10px",
+          textAlign: "center",
+          textDecoration: "none",
+          padding: "12px",
+          boxSizing: "border-box",
+        }}
+      >
+        ⭐ Reviews
+      </Link>
     </div>
   );
 };
