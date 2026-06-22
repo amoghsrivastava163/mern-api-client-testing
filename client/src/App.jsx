@@ -1,3 +1,4 @@
+import Payment from "./pages/Payment";
 import Reviews from "./pages/Reviews";
 import {
   BrowserRouter,
@@ -50,6 +51,10 @@ function App() {
         <Route
   path="/reviews/:productId"
   element={<Reviews />}
+/>
+<Route
+  path="/payment"
+  element={<Payment />}
 />
 
         <Route

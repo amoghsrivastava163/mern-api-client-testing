@@ -8,6 +8,9 @@ const Navbar = () => {
       </h2>
 
       <div className="nav-links">
+        <Link to="/payment">
+  Payment
+</Link>
         <Link to="/">Products</Link>
 
         <Link to="/wishlist">
