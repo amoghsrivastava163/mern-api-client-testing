@@ -1,3 +1,4 @@
+import AdminDashboard from "./pages/AdminDashboard";
 import Payment from "./pages/Payment";
 import Reviews from "./pages/Reviews";
 import {
@@ -55,6 +56,10 @@ function App() {
 <Route
   path="/payment"
   element={<Payment />}
+/>
+<Route
+  path="/admin"
+  element={<AdminDashboard />}
 />
 
         <Route

@@ -22,6 +22,9 @@ const Navbar = () => {
         <Link to="/checkout">
           Checkout
         </Link>
+        <Link to="/admin">
+  Admin
+</Link>
 
         <Link to="/add">
           Add Product

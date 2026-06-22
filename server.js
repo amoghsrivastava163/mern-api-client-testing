@@ -10,45 +10,72 @@ const wishlistRoutes = require("./routes/wishlistRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 const errorMiddleware = require("./middleware/errorMiddleware");
 
 const app = express();
 
-// Database Connection
 connectDB();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
-// Test Route
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "Product API Running Successfully",
+    message:
+      "Product API Running Successfully",
   });
 });
 
-// Debug Route
-app.get("/test-payment", (req, res) => {
-  res.json({
-    message: "Payment Route Test Working",
-  });
-});
+app.get(
+  "/test-payment",
+  (req, res) => {
+    res.json({
+      message:
+        "Payment Route Test Working",
+    });
+  }
+);
 
-// API Routes
-app.use("/api/products", productRoutes);
-app.use("/api/wishlist", wishlistRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/reviews", reviewRoutes);
-app.use("/api/payments", paymentRoutes);
+app.use(
+  "/api/products",
+  productRoutes
+);
 
-// Error Middleware
+app.use(
+  "/api/wishlist",
+  wishlistRoutes
+);
+
+app.use(
+  "/api/orders",
+  orderRoutes
+);
+
+app.use(
+  "/api/reviews",
+  reviewRoutes
+);
+
+app.use(
+  "/api/payments",
+  paymentRoutes
+);
+
+app.use(
+  "/api/admin",
+  adminRoutes
+);
+
 app.use(errorMiddleware);
 
-// 404 Handler
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -56,10 +83,17 @@ app.use((req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT =
+  process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log("=================================");
-  console.log(`Server running on port ${PORT}`);
-  console.log("=================================");
+  console.log(
+    "================================="
+  );
+  console.log(
+    `Server running on port ${PORT}`
+  );
+  console.log(
+    "================================="
+  );
 });
